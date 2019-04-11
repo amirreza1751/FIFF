@@ -40,6 +40,7 @@ class CreateMoviesTable extends Migration
             $table->text('trailer')->nullable();
             $table->string('festival_number')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
 
     }

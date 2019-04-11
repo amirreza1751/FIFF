@@ -17,6 +17,7 @@ class CreateWorkshopCommentsTable extends Migration
             $table->increments('id');
             $table->string('comment', 500)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
         Schema::table('workshop_comments', function (Blueprint $table) {
             $table->unsignedInteger('user_id');

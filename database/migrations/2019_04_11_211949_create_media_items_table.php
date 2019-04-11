@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMovieAwardsPicturesTable extends Migration
+class CreateMediaItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateMovieAwardsPicturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('movie_awards_pictures', function (Blueprint $table) {
+        Schema::create('media_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('path', 500)->nullable();
+            $table->string('title', 500)->nullable();
+            $table->text('description')->nullable();
+            $table->string('link', 1000)->nullable();
+            $table->string('pic1', 500)->nullable();
+            $table->string('pic2', 500)->nullable();
+            $table->string('type', 500)->nullable();
             $table->timestamps();
             $table->softDeletes();
-        });
-        Schema::table('movie_awards_pictures', function (Blueprint $table) {
-            $table->unsignedInteger('movie_id');
-            $table->foreign('movie_id')->references('id')->on('movies');
         });
     }
 
@@ -32,6 +33,6 @@ class CreateMovieAwardsPicturesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movie_awards_pictures');
+        Schema::dropIfExists('media_items');
     }
 }

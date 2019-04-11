@@ -17,6 +17,7 @@ class CreateMoviePicturesTable extends Migration
             $table->increments('id');
             $table->string('path', 500)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
         Schema::table('movie_pictures', function (Blueprint $table) {
             $table->unsignedInteger('movie_id');

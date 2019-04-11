@@ -20,6 +20,7 @@ class CreatePhonenumberTokensTable extends Migration
 //            $table->string('date');
             $table->boolean('used');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

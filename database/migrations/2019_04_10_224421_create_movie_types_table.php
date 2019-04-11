@@ -17,6 +17,7 @@ class CreateMovieTypesTable extends Migration
             $table->increments('id');
             $table->string('name', 500)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

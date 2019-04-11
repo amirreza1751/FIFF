@@ -17,6 +17,7 @@ class CreateWorkshopPicturesTable extends Migration
             $table->increments('id');
             $table->string('path', 500)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
         Schema::table('workshop_pictures', function (Blueprint $table) {
             $table->unsignedInteger('workshop_id');

@@ -29,6 +29,7 @@ class CreateWorkshopsTable extends Migration
             $table->string('country_fa')->nullable();
             $table->string('country_en')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
