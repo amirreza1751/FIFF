@@ -14,7 +14,8 @@ class MediaItem extends Model
     protected $fillable = [
         'title',
         'description',
-        'link',
+        'link_hls',
+        'link_dash',
         'pic1',
         'pic2',
         'type'

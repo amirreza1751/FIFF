@@ -35,7 +35,8 @@ class Movie extends Model
         'awards_en',
         'poster',
         'director_picture',
-        'trailer',
+        'trailer_link_hls',
+        'trailer_link_dash',
         'festival_number',
     ];
 
