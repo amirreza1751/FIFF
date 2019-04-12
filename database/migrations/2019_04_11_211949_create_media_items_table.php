@@ -17,7 +17,8 @@ class CreateMediaItemsTable extends Migration
             $table->increments('id');
             $table->string('title', 500)->nullable();
             $table->text('description')->nullable();
-            $table->string('link', 1000)->nullable();
+            $table->string('link_hls', 1000)->nullable();
+            $table->string('link_dash', 1000)->nullable();
             $table->string('pic1', 500)->nullable();
             $table->string('pic2', 500)->nullable();
             $table->string('type', 500)->nullable();

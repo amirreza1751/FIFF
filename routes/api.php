@@ -28,3 +28,9 @@ Route::group([
 });
 
 Route::post('/send_otp','API\OtpController@send_otp');
+Route::get('/hash', function (){
+    return sodium_crypto_pwhash_scryptsalsa208sha256(50) ;
+
+});
+
+

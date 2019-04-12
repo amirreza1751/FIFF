@@ -11,6 +11,7 @@ class OtpController extends Controller
 {
     public function send_otp(Request $request)
     {
+
         $request->validate([
             'phone_number' => 'required',
             // sample phone number 09126774496

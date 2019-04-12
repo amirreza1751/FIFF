@@ -23,7 +23,8 @@ class CreateWorkshopsTable extends Migration
             $table->string('teacher_name_en')->nullable();
             $table->text('teacher_info_fa')->nullable();
             $table->text('teacher_info_en')->nullable();
-            $table->text('link')->nullable();
+            $table->text('link_hls')->nullable();
+            $table->text('link_dash')->nullable();
             $table->text('text_fa')->nullable();
             $table->text('text_en')->nullable();
             $table->string('country_fa')->nullable();
