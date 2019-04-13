@@ -12,12 +12,15 @@ class MediaItem extends Model
 
     protected $table = 'media_items';
     protected $fillable = [
-        'title',
-        'description',
+        'title_fa',
+        'title_en',
+        'description_fa',
+        'description_en',
         'link_hls',
         'link_dash',
         'pic1',
         'pic2',
-        'type'
+        'type_fa',
+        'type_en'
     ];
 }

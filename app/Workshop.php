@@ -27,6 +27,7 @@ class Workshop extends Model
         'text_en',
         'country_fa',
         'country_en',
+        'festival_number'
     ];
 
     public function comments()

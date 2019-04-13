@@ -18,3 +18,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::group([
+    'prefix' => 'workshops',
+    'middleware' => 'auth:web'
+], function () {
+    Route::post('/create', 'WorkshopController@create');
+    Route::post('/update/{workshop}', 'WorkshopController@update');
+    Route::get('/', 'WorkshopController@index');
+    Route::get('/delete/{workshop}', 'WorkshopController@destroy');
+    Route::get('/edit/{workshop}', 'WorkshopController@edit');
+    Route::get('/add', 'WorkshopController@add');
+    Route::get('/pics/{id}', 'WorkshopController@show_pictures');
+
+});

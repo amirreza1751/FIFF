@@ -29,6 +29,10 @@ class OtpController extends Controller
 //            'date' => $result->entries[0]->date
             'used' => '0'
         ]);
-        return $r->getBody();
+        if( $result->return->status == 200){
+            return response()->json(['status' => 'otp sent.'], 200);
+        } else {
+            return response()->json(['status' => 'failed to send otp.'], $result->return->status);
+        }
     }
 }

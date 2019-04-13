@@ -29,6 +29,7 @@ class CreateWorkshopsTable extends Migration
             $table->text('text_en')->nullable();
             $table->string('country_fa')->nullable();
             $table->string('country_en')->nullable();
+            $table->string('festival_number')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -26,18 +26,18 @@ class AuthController extends Controller
         ]);
         $check_user = User::where('phone_number', $request->phone_number)->first();
         if (isset($check_user)){
-            return response()->json(['status'=>'1', 'description'=> 'user is subscribed.'], 200);
+            return response()->json(['status'=>'duplicate user', 'description'=> 'already registered. please sign in.'], 200);
         }
 
         $record = \App\PhoneNumberToken::where('phone_number',$request->phone_number)->where('used','0')->latest()->first();
         if ($record == null){
             return response()->json([
-                'message' => 'otp has used before or does not exist.'
+                'status' => 'otp has used before or does not exist.'
             ]);
         }
         if($record->token != $request->token){
             return response()->json([
-                'message' => 'otp code is incorrect.'
+                'status' => 'otp code is incorrect.'
             ]);
         }
         $user = new User([
@@ -112,7 +112,7 @@ class AuthController extends Controller
         $request->user()->token()->revoke();
 
         return response()->json([
-            'message' => 'Successfully logged out'
+            'status' => 'Successfully logged out'
         ]);
     }
 
