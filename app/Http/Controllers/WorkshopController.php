@@ -16,7 +16,7 @@ class WorkshopController extends Controller
      */
     public function index()
     {
-        $workshops = Workshop::with('pictures')->latest()->paginate(10);
+        $workshops = Workshop::with('pictures')->paginate(10);
 //        return $workshops;
         return view('workshops.index', compact('workshops'));
     }
@@ -118,6 +118,15 @@ class WorkshopController extends Controller
         Session::flash('alert-class', 'alert-success');
         $workshop->delete();
 
+        return back();
+    }
+
+    public function special(Workshop $workshop)
+    {
+        if ($workshop->special == 0)
+        $workshop->special = 1;
+        else $workshop->special = 0;
+        $workshop->save();
         return back();
     }
 }

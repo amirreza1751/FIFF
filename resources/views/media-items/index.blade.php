@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="container">
-<h2 class="text-center" >ورکشاپ ها</h2>
+<h2 class="text-center" >مصاحبه ها و نشست ها</h2>
         <a class="btn btn-info" href="/home">بازگشت</a>
-        <a class="btn btn-primary" href="/workshops/add">افزودن ورکشاپ</a>
+        <a class="btn btn-primary" href="/media-items/add">افزودن آیتم جدید</a>
         <br>
         <br>
         <input id="myInput" class="form-control container" type="text" placeholder=" جستجو کنید ..." style="direction: rtl">
@@ -18,13 +18,9 @@
                 <thead class="table-dark">
                 <tr>
                     <th scope="row">ردیف</th>
-                    <th >عنوان ورکشاپ</th>
-                    <th>دسته بندی</th>
-                    <th>نام مدرس</th>
-                    <th>اطلاعات مدرس</th>
+                    <th>عنوان</th>
                     <th>توضیحات</th>
-                    <th>کشور مدرس</th>
-                    <th>دوره</th>
+                    <th>دسته بندی</th>
                     <th>عکس ها</th>
                     <th>ویرایش</th>
                     <th>حذف</th>
@@ -33,34 +29,30 @@
                 </thead>
                 <tbody id="myTable">
 
-                @foreach($workshops as $workshop)
+                @foreach($media_items as $media_item)
                     <tr>
                         <td>{{++$loop->index}}</td>
-                        <td>{{$workshop->subject_fa}}</td>
-                        <td>{{$workshop->category_fa}}</td>
-                        <td>{{$workshop->teacher_name_fa}}</td>
-                        <td>{{$workshop->teacher_info_fa}}</td>
-                        <td>{{$workshop->text_fa}}</td>
-                        <td>{{$workshop->country_fa}}</td>
-                        <td>{{$workshop->festival_number}}</td>
-                        <td><a href="/workshops/pics/{{$workshop->id}}">عکس ها</a> </td>
+                        <td>{{$media_item->title_fa}}</td>
+                        <td>{{$media_item->description_fa}}</td>
+                        <td>{{$media_item->type}}</td>
+                        <td><a href="/media-items/pics/{{$media_item->id}}">عکس ها</a> </td>
                         <td>
                             <span style="font-size: 23px; color: black;">
-                               <a href="/workshops/edit/{{$workshop->id}}" style="color: black ;">
+                               <a href="/media-items/edit/{{$media_item->id}}" style="color: black ;">
                                   <i class="far fa-edit"></i>
                                </a>
                              </span>
                         </td>
                         <td>
                             <span style="font-size: 23px; color: black;">
-                                <a class="deleteCourse" href="#" data-courseid="{{$workshop->id}}" id="deleteID" data-target="#myModal" data-toggle="modal" style="color: black ;">
+                                <a class="deleteCourse" href="#" data-courseid="{{$media_item->id}}" id="deleteID" data-target="#myModal" data-toggle="modal" style="color: black ;">
                                     <i class="far fa-trash-alt"></i>
                                 </a>
                              </span>
                         </td>
                         <td>
-                            <span style="font-size: 23px; color: black;">
-                                <a href="/workshops/special/{{$workshop->id}}"  style="color: @if($workshop->special==1){{'red'}} @else {{'black'}} @endif;">
+                            <span style="font-size: 23px; ">
+                                <a href="/media-items/special/{{$media_item->id}}"  style="color: @if($media_item->special==1){{'red'}} @else {{'black'}} @endif ;">
                                     <i class="far fa-star"></i>
                                 </a>
                              </span>
@@ -70,7 +62,7 @@
                 </tbody>
             </table>
 
-        <div class="pagination justify-content-center">{{ $workshops->links() }}</div>
+        <div class="pagination justify-content-center">{{ $media_items->links() }}</div>
 
     </div>
 
@@ -83,13 +75,13 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h5 class="modal-title" style="float: right">حذف ورکشاپ</h5>
+                    <h5 class="modal-title" style="float: right">حذف آیتم ویدیویی</h5>
                     <button type="button" class="close" data-dismiss="modal" style="float: left;">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body" style="text-align: right">
-                    آیا از حذف کردن ورکشاپ مطمئن هستید؟
+                    آیا از حذف کردن این آیتم مطمئن هستید؟
                 </div>
 
                 <!-- Modal footer -->
@@ -118,7 +110,7 @@
 
         $(document).on('click','.deleteCourse',function(){
             var courseID=$(this).attr('data-courseid');
-            var courseIDhref = "workshops/delete/"+ courseID;
+            var courseIDhref = "media-items/delete/"+ courseID;
             $('#modalDeleteButton').attr("href", courseIDhref);
         });
     </script>

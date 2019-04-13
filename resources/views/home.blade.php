@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                        <a class="btn btn-primary btn-block" href="/workshops">ورکشاپ ها</a>
+                        <a class="btn btn-primary btn-block" href="/media-items">آیتم های ویدیویی</a>
                 </div>
             </div>
         </div>
