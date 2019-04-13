@@ -15,6 +15,7 @@
                     @endif
                         <a class="btn btn-primary btn-block" href="/workshops">ورکشاپ ها</a>
                         <a class="btn btn-primary btn-block" href="/media-items">آیتم های ویدیویی</a>
+                        <a class="btn btn-primary btn-block" href="/movies">فیلم ها</a>
                 </div>
             </div>
         </div>
