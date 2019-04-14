@@ -148,7 +148,6 @@
                                         <option value="مستند کوتاه">مستند کوتاه</option>
                                         <option value="مستند نیمه بلند">مستند نیمه بلند</option>
                                         <option value="مستند بلند">مستند بلند</option>
-                                        <option value="مستند بلند">مستند بلند</option>
                                         <option value="فیلم های کوتاه">فیلم های کوتاه</option>
                                     </select>
                                     @if ($errors->has('type_fa'))

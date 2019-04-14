@@ -43,8 +43,8 @@
                         </td>
                         <td>
                             <span style="font-size: 23px; color: black;">
-                               {{--<a href="/movies/edit/{{$movie->id}}" style="color: black ;">--}}
-                               <a href="#" style="color: black ;">
+                               <a href="/movies/edit/{{$movie->id}}" style="color: black ;">
+                               {{--<a href="#" style="color: black ;">--}}
                                   <i class="far fa-edit"></i>
                                </a>
                              </span>
