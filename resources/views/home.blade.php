@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header text-right">پنل ادمین</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,9 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <a class="btn btn-primary btn-block" href="/workshops">ورکشاپ ها</a>
-                        <a class="btn btn-primary btn-block" href="/media-items">آیتم های ویدیویی</a>
-                        <a class="btn btn-primary btn-block" href="/movies">فیلم ها</a>
+                        <div class="text-center">
+                            <a class="btn btn-primary" href="/movies">فیلم ها</a>
+                            <a class="btn btn-primary" href="/workshops">ورکشاپ ها</a>
+                            <a class="btn btn-primary" href="/media-items">آیتم های ویدیویی(مصاحبه ها و نشست ها)</a>
+                        </div>
                 </div>
             </div>
         </div>

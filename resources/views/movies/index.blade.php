@@ -37,10 +37,14 @@
                         <td>{{$movie->type_fa}}</td>
                         <td>{{$movie->genre_fa}}</td>
                         <td>{{$movie->product_year_fa}}</td>
-                        <td><a href="/movies/pics/{{$movie->id}}">عکس ها</a> </td>
+                        <td>
+{{--                            <a href="/movies/pics/{{$movie->id}}">عکس ها</a> --}}
+                            <a href="#">عکس ها</a>
+                        </td>
                         <td>
                             <span style="font-size: 23px; color: black;">
-                               <a href="/movies/edit/{{$movie->id}}" style="color: black ;">
+                               {{--<a href="/movies/edit/{{$movie->id}}" style="color: black ;">--}}
+                               <a href="#" style="color: black ;">
                                   <i class="far fa-edit"></i>
                                </a>
                              </span>
@@ -54,7 +58,8 @@
                         </td>
                         <td>
                             <span style="font-size: 23px; color: black;">
-                                <a href="/movies/special/{{$movie->id}}"  style="color: @if($movie->special==1){{'red'}} @else {{'black'}} @endif;">
+                                {{--<a href="/movies/special/{{$movie->id}}"  style="color: @if($movie->special==1){{'red'}} @else {{'black'}} @endif;">--}}
+                                <a href="#"  style="color:black;">
                                     <i class="far fa-star"></i>
                                 </a>
                              </span>

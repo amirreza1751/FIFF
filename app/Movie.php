@@ -35,9 +35,14 @@ class Movie extends Model
         'awards_en',
         'poster',
         'director_picture',
+        'director_name_fa',
+        'director_name_en',
+        'producer_name_fa',
+        'producer_name_en',
         'trailer_link_hls',
         'trailer_link_dash',
         'festival_number',
+        'special',
     ];
 
     public function pictures()

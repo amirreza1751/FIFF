@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Movie;
+use App\MovieAwardPicture;
 use App\MoviePicture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MovieController extends Controller
 {
@@ -31,14 +33,18 @@ class MovieController extends Controller
      */
     public function create(Request $request)
     {
+//        return $request->all();
         $this->validate($request, [
-            'pictures.*' => 'image|mimes:jpeg,png,jpg|max:2048'
+            'filename.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'director_picture' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'poster' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
         $movie = Movie::create($request->all());
-        if(($request->hasfile('pictures'))) //age ax upload karde bud: ...
+
+        if(($request->hasfile('filename'))) //age ax upload karde bud: ...
         {
-            foreach($request->file('pictures') as $image)
+            foreach($request->file('filename') as $image)
             {
                 $name= mt_rand(1000000000, 9999999999).".".$image->getClientOriginalExtension();
                 $image->move(public_path().'/pictures/movies/pics', $name);
@@ -54,19 +60,36 @@ class MovieController extends Controller
             foreach($request->file('award_pictures') as $image)
             {
                 $name= mt_rand(1000000000, 9999999999).".".$image->getClientOriginalExtension();
-                $image->move(public_path().'/pictures/movies/awards', $name);
-                MoviePicture::create([
-                    'path' => '/pictures/movies/awards'.$name,
+                $image->move(public_path().'/pictures/movies/awards/', $name);
+                MovieAwardPicture::create([
+                    'path' => '/pictures/movies/awards/'.$name,
                     'movie_id' => $movie->id
                 ]);
             }
         }
 
 
+        if(($request->hasfile('director_picture'))) //age ax upload karde bud: ...
+        {
+                $image = $request->file('director_picture');
+                $name= mt_rand(1000000000, 9999999999).".".$image->getClientOriginalExtension();
+                $image->move(public_path().'/pictures/movies/director/', $name);
+                $movie->director_picture = '/pictures/movies/director/'.$name;
+        }
+
+        if(($request->hasfile('poster'))) //age ax upload karde bud: ...
+        {
+            $image = $request->file('poster');
+            $name= mt_rand(1000000000, 9999999999).".".$image->getClientOriginalExtension();
+            $image->move(public_path().'/pictures/movies/poster/', $name);
+            $movie->poster = '/pictures/movies/poster/'.$name;
+        }
+
+
 
         Session::flash('message', '.فیلم '.$movie->name_fa.' با موفقیت ذخیره شد');
         Session::flash('alert-class', 'alert-success');
-
+        $movie->save();
         return back();
     }
 
@@ -79,17 +102,6 @@ class MovieController extends Controller
         return view('movies.pics', compact('pictures', 'award_pictures'));
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.

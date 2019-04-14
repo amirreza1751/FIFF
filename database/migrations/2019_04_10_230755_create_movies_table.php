@@ -37,9 +37,14 @@ class CreateMoviesTable extends Migration
             $table->text('awards_en')->nullable();
             $table->string('poster', 1000)->nullable();
             $table->string('director_picture', 1000)->nullable();
+            $table->string('director_name_fa', 1000)->nullable();
+            $table->string('director_name_en', 1000)->nullable();
+            $table->string('producer_name_fa', 1000)->nullable();
+            $table->string('producer_name_en', 1000)->nullable();
             $table->text('trailer_link_hls')->nullable();
             $table->text('trailer_link_dash')->nullable();
             $table->string('festival_number')->nullable();
+            $table->boolean('special')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
